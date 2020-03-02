@@ -13,10 +13,8 @@ pipeline {
         }
         stage ('Build') {
             steps {
-                //sh 'cd Maven-pipeline'
                 sh 'mvn clean install test'
-                //cucumber failedFeaturesNumber: -1, failedScenariosNumber: -1, failedStepsNumber: -1, fileIncludePattern: '**/*.json', 
-pendingStepsNumber: -1, skippedStepsNumber: -1, sortingMethod: 'ALPHABETICAL', undefinedStepsNumber: -1
+
             cucumber buildStatus: "UNSTABLE",
                     fileIncludePattern: "**/cucumber.json",
                     jsonReportDirectory: 'target'
